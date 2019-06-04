@@ -10,5 +10,7 @@ public class QiaoHttpConst {
     public static final int CAPACITY = 4;
     public static final String REQUEST_METHOD_GET = "GET";
     public static final String REQUEST_METHOD_POST = "POST";
+    public static final String REQUEST_METHOD_PUT = "PUT";
+    public static final String REQUEST_METHOD_DELETE = "DELETE";
 
 }
