@@ -1,0 +1,1 @@
+include ':app', ':qiao_basemodule', ':qiao_techcomponent', ':qiao_struct', ':qiao_stander', ':QiaoBaChild'
