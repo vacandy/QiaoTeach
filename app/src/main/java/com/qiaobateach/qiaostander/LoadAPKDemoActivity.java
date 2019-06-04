@@ -40,7 +40,6 @@ public class LoadAPKDemoActivity extends Activity{
             }
         });
 
-        lengthOfLongestSubstring("abcabcbb");
     }
 
     private void load () {
@@ -78,31 +77,6 @@ public class LoadAPKDemoActivity extends Activity{
 
     }
 
-
-    /**
-     * 查找连续字符串的最大长度
-     * @param s abcabcaba
-     * @return
-     */
-    public int lengthOfLongestSubstring(String s) {
-        int []hash = new int [500];
-        int max = 0;
-        int i = 0, j = 0;
-
-        while (i < s.length() && j <s.length() ) {
-            Object o = s.charAt(j);
-            if(hash[s.charAt(j)] == 0) {
-                hash[s.charAt(j)] = 1;
-                int xx = hash[s.charAt(j)];
-                j++;
-                max = (j - i) > max ? (j - i) : max;
-            } else {
-                hash[s.charAt(i)] = 0;
-                i++;
-            }
-        }
-        return max;
-    }
 
 
 }
