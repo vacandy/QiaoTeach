@@ -1,8 +1,11 @@
-package com.qiaobachild;
+package com.qiaobachild.base;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -67,6 +70,32 @@ public class ChildBaseActivity extends Activity implements QiaoInterface{
         }
     }
 
+
+    @Override
+    public ComponentName startService(Intent service) {
+        if (null != that) {
+            Intent i = new Intent();
+            i.putExtra("serviceName",service.getComponent().getClassName());
+            return that.startService(i);
+        } else {
+            return super.startService(service);
+        }
+    }
+
+
+    @Override
+    public void sendBroadcast(Intent intent) {
+        that.sendBroadcast(intent);
+    }
+
+    @Override
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+        if (null != that) {
+            return that.registerReceiver(receiver, filter);
+        } else {
+            return super.registerReceiver(receiver, filter);
+        }
+    }
 
     @Override
     public WindowManager getWindowManager() {

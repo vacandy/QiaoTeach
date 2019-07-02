@@ -1,16 +1,28 @@
-package com.qiaobateach.qiaostander;
+package com.qiaobateach.plugin.pluginactivity;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.qiao_stander.QiaoInterface;
+import com.qiao_techcomponent.pluginload.PluginLoadManager;
+import com.qiaobateach.plugin.pluginbroadcast.ProxyBroadCast;
+import com.qiaobateach.plugin.pluginservice.ProxyService;
 
 import java.lang.reflect.Constructor;
 
-public class LoadPluginActivity extends Activity{
+/***
+ * 开启插件的Activity桩
+ * 将插件里要跳转的Activity类加载进来，然后实例出一个对象
+ * 通过接入标准方法，注入宿主的上下文，同时赋予插件Activity的生命周期
+ * 在这里赋予插件的生命周期
+ */
+public class ProxyActivity extends Activity{
 
 
     private String className;
@@ -76,14 +88,43 @@ public class LoadPluginActivity extends Activity{
         return PluginLoadManager.getInstance().getmResources();
     }
 
+    /***
+     * 启动服务
+     * @param service
+     * @return
+     */
+    @Override
+    public ComponentName startService(Intent service) {
+        String serviceName = service.getStringExtra("serviceName");
+        Intent intent = new Intent(this, ProxyService.class);
+        intent.putExtra("serviceName",serviceName);
+        return super.startService(intent);
+
+    }
+
+
+    /**
+     * 插件广播注册
+     * @param receiver
+     * @param filter
+     * @return
+     */
+    @Override
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+        IntentFilter intentFilter = new IntentFilter();
+        for (int i=0;i<filter.countActions();i++) {
+            intentFilter.addAction(filter.getAction(i));
+        }
+        return super.registerReceiver(new ProxyBroadCast(receiver.getClass().getName(),this), intentFilter);
+    }
 
     @Override
     public void startActivity(Intent intent) {
         String className = intent.getStringExtra("className");
         /***
-         * 跳转自己，为了重新赋予插件要跳转的activity的生命周期
+         * 跳转自己，由代理Activity跳转到目标页面，为了重新赋予插件要跳转的activity的生命周期
          */
-        Intent i = new Intent(this,LoadPluginActivity.class);
+        Intent i = new Intent(this, ProxyActivity.class);
         i.putExtra("className",className);
         super.startActivity(i);
     }

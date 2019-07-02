@@ -20,6 +20,20 @@
 
         <activity android:name="com.qiaobachild.SecondActivity"/>
 
+        <receiver android:name="com.qiaobachild.StaticBoradCast">
+
+            <intent-filter>
+
+                <action android:name="">
+
+                </action>
+
+            </intent-filter>
+
+        </receiver>
+
+
+
     </application>
 
 </manifest>

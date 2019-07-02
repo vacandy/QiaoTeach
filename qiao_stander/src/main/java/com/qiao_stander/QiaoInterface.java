@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 /***
  * 插件接入宿主接口标准 插件需要实现该接口，以获取插件Activity的生命周期
+ *
+ * 项目中需要用到的生命周期函数都需要写到这里
  */
 public interface QiaoInterface {
 

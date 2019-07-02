@@ -1,4 +1,4 @@
-package com.qiaobateach.qiaostander;
+package com.qiaobateach.plugin;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import java.io.File;
 import com.qiaobateach.R;
+import com.qiao_techcomponent.pluginload.PluginLoadManager;
 
 
 public class LoadAPKDemoActivity extends Activity{

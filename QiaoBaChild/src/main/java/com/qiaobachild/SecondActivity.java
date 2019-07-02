@@ -2,7 +2,9 @@ package com.qiaobachild;
 
 import android.os.Bundle;
 
-public class SecondActivity extends ChildBaseActivity{
+import com.qiaobachild.base.ChildBaseActivity;
+
+public class SecondActivity extends ChildBaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

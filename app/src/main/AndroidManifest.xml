@@ -27,7 +27,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.qiaobateach.qiaostander.LoadAPKDemoActivity">
+        <activity android:name="com.qiaobateach.qiao_viewdemo_activity.QiaoBigImageViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,8 +36,9 @@
         </activity>
 
 
-        <activity android:name="com.qiaobateach.qiaostander.LoadPluginActivity"/>
+        <activity android:name="com.qiaobateach.plugin.LoadPluginActivity"/>
 
+        <service android:name=".plugin.pluginservice.ProxyService"/>
 
     </application>
 

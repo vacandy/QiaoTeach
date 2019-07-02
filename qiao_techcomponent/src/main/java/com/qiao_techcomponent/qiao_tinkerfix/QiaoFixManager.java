@@ -13,8 +13,9 @@ public class QiaoFixManager {
     private static HashSet<File> loadedDex = new HashSet<>();
 
     public static void loadFixedDex(Context context) {
-        if (context == null)
+        if (context == null) {
             return;
+        }
         //修复前先清空
         loadedDex.clear();
         //dex文件目录

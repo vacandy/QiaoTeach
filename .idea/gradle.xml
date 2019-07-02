@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/qiao_stander" />
             <option value="$PROJECT_DIR$/qiao_struct" />
             <option value="$PROJECT_DIR$/qiao_techcomponent" />
+            <option value="$PROJECT_DIR$/qiao_widget" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
